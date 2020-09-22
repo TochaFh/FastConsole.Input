@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="FastConsole" Version="1.1.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <!-- NuGet package -->
+    <PackageId>FastConsole.Input</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Rafael Hoyos</Authors>
+    <Company>TochaFh</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <!--
+    <PackageIconUrl></PackageIconUrl>
+    <Description></Description>
+    <PackageTags></PackageTags>
+    -->
+    <RepositoryUrl>https://github.com/TochaFh/FastConsole.Input</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TochaFh/FastConsole.Input</PackageProjectUrl>
+    <Copyright>Copyright © 2020 Rafael Hoyos</Copyright>
+
+    <!-- Xml documentation to work -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+</Project>
