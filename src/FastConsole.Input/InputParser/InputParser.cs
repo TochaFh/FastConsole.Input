@@ -1,12 +1,66 @@
 ﻿using System;
+using System.Globalization;
 
 namespace FastConsole
 {
     /// <summary>
-    /// Static methods to parse strings to other types.
+    /// Static methods to parse strings to number types.
     /// </summary>
     public static class InputParser
     {
+        #region Props
+        /// <summary>
+        /// The NumberStyles used by the conversions in this class.
+        /// </summary>
+        /// <value></value>
+        public static NumberStyles NumberStyles { get; set; } = NumberStyles.Number;
+
+        /// <summary>
+        /// The IFormatProvider used by the conversions in this class.<para/>
+        /// By default it calls 'CultureInfo.CurrentCulture', so you could just change 'CultureInfo.CurrentCulture'.
+        /// But you can also change only the 'InputParser.FormatProvider' value!
+        /// </summary>
+        /// <value></value>
+        public static IFormatProvider FormatProvider { get => _culture ?? CultureInfo.CurrentCulture; set => _culture = value; }
+        private static IFormatProvider _culture = null;
+        #endregion
+        
+        /// <summary>
+        /// Tries to parse the string to sbyte. <para/>
+        /// If it fails, null is returned.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static sbyte? ParseSbyte(string s)
+        {
+            try
+            {
+                return sbyte.Parse(s, NumberStyles, FormatProvider);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Tries to parse the string to byte. <para/>
+        /// If it fails, null is returned.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static byte? ParseByte(string s)
+        {
+            try
+            {
+                return byte.Parse(s, NumberStyles, FormatProvider);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Tries to parse the string to ushort. <para/>
         /// If it fails, null is returned.
@@ -17,7 +71,7 @@ namespace FastConsole
         {
             try
             {
-                return ushort.Parse(s);
+                return ushort.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -35,7 +89,7 @@ namespace FastConsole
         {
             try
             {
-                return short.Parse(s);
+                return short.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -53,7 +107,7 @@ namespace FastConsole
         {
             try
             {
-                return uint.Parse(s);
+                return uint.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -71,7 +125,7 @@ namespace FastConsole
         {
             try
             {
-                return int.Parse(s);
+                return int.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -89,7 +143,7 @@ namespace FastConsole
         {
             try
             {
-                return ulong.Parse(s);
+                return ulong.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -107,7 +161,7 @@ namespace FastConsole
         {
             try
             {
-                return long.Parse(s);
+                return long.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -125,7 +179,7 @@ namespace FastConsole
         {
             try
             {
-                return decimal.Parse(s);
+                return decimal.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -143,7 +197,7 @@ namespace FastConsole
         {
             try
             {
-                return float.Parse(s);
+                return float.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {
@@ -161,7 +215,7 @@ namespace FastConsole
         {
             try
             {
-                return double.Parse(s);
+                return double.Parse(s, NumberStyles, FormatProvider);
             }
             catch (Exception)
             {

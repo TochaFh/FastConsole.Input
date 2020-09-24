@@ -4,6 +4,7 @@ namespace FastConsole
 {
     /// <summary>
     /// The main static class of FastConsole (.Input) for getting input from the console.
+    /// Easy input with messages, validationd, etc.
     /// </summary>
     public static partial class In
     {
@@ -38,13 +39,13 @@ namespace FastConsole
         /// <returns></returns>
         public static string ReadString(IInputOptions opt)
         {
-            opt.RequestMessage();
+            opt.PrintRequestMsg();
 
             string s = In.ReadLine();
 
             if (!string.IsNullOrWhiteSpace(s)) return s;
 
-            if (opt.ShowInvalidMessage) opt.InvalidInputMessage();
+            if (opt.ShowInvalidInputMsg) opt.PrintInvalidInputMsg();
 
             if (opt.RepeatWhenInvalid) return In.ReadString(opt);
 
@@ -53,7 +54,7 @@ namespace FastConsole
 
         /// <summary>
         /// Invokes the opt 'RequestMessage()' and reads the next line from the console.<para/>
-        /// Uses the Func to parse the string and, if it returns null, a decision is made according to opt.
+        /// Uses the Func to parse and validate the string and, if it returns null, a decision is made according to opt.
         /// </summary>
         /// <param name="opt"></param>
         /// <param name="parse"></param>
@@ -61,13 +62,13 @@ namespace FastConsole
         /// <returns></returns>
         public static T ReadInput<T>(IInputOptions opt, Func<string, T> parse)
         {
-            opt.RequestMessage();
+            opt.PrintRequestMsg();
 
             T result = parse(In.ReadLine());
 
             if (result != null) return result;
 
-            if (opt.ShowInvalidMessage) opt.InvalidInputMessage();
+            if (opt.ShowInvalidInputMsg) opt.PrintInvalidInputMsg();
 
             if (opt.RepeatWhenInvalid) return In.ReadInput<T>(opt, parse);
 
@@ -75,7 +76,7 @@ namespace FastConsole
         }
 
         /// <summary>
-        /// Returns 'ReadInput(IInputOptions opt, Func parse)' with the specified parse parameter and an IInputOptions based on the specified string.
+        /// Returns 'ReadInput(IInputOptions opt, Func parse)' with the specified parse parameter and an SimpleInputOpt based on the specified string.
         /// </summary>
         /// <param name="requestMessage"></param>
         /// <param name="parse"></param>
@@ -83,7 +84,38 @@ namespace FastConsole
         /// <returns></returns>
         public static T ReadInput<T>(string requestMessage, Func<string, T> parse)
         {
-            return ReadInput<T>(requestMessage.InputOpt(), parse);
+            return ReadInput<T>(requestMessage.InOpt(), parse);
+        }
+
+        #region Shortcuts
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to ushort.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static ushort? ReadUshort(IInputOptions opt)
+        {
+            return ReadInput<ushort?>(opt, InputParser.ToUshort);
+        }
+
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to short.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static short? ReadShort(IInputOptions opt)
+        {
+            return ReadInput<short?>(opt, InputParser.ToShort);
+        }
+
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to uint.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static uint? ReadUint(IInputOptions opt)
+        {
+            return ReadInput<uint?>(opt, InputParser.ToUint);
         }
 
         /// <summary>
@@ -94,6 +126,16 @@ namespace FastConsole
         public static int? ReadInt(IInputOptions opt)
         {
             return ReadInput<int?>(opt, InputParser.ToInt);
+        }
+
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to ulong.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static ulong? ReadUlong(IInputOptions opt)
+        {
+            return ReadInput<ulong?>(opt, InputParser.ToUlong);
         }
 
         /// <summary>
@@ -125,5 +167,26 @@ namespace FastConsole
         {
             return ReadInput<double?>(opt, InputParser.ToDouble);
         }
+
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to byte.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static byte? ReadByte(IInputOptions opt)
+        {
+            return ReadInput<byte?>(opt, InputParser.ParseByte);
+        }
+
+        /// <summary>
+        /// Invokes 'ReadInput' with the specified options and a parser to sbyte.
+        /// </summary>
+        /// <param name="opt"></param>
+        /// <returns></returns>
+        public static sbyte? ReadSbyte(IInputOptions opt)
+        {
+            return ReadInput<sbyte?>(opt, InputParser.ParseSbyte);
+        }
+        #endregion
     }
 }

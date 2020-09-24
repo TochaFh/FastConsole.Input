@@ -1,4 +1,5 @@
-﻿using FastConsole;
+﻿using System.Globalization;
+using FastConsole;
 using static System.ConsoleColor;
 
 namespace ConsoleTest
@@ -9,9 +10,12 @@ namespace ConsoleTest
         {
             Out.Println("Hello, world!");
 
-            int input = In.ReadInt("Your age: ".InputOpt()).Value;
+            var opts = new SimpleInputOpt("Enter your age: ", "You must digit a valid number!\n");
 
-            Out.Println($"A entrada foi boa: '{input}'");
+            int age = In.ReadInt(opts).Value;
+            float height = In.ReadFloat(opts.SetMsg("Enter your height: ")).Value;
+
+            Out.Println($"You are age years old and your height is {height} m");
         }
     }
 }

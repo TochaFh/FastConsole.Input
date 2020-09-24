@@ -1,4 +1,4 @@
-namespace FastConsole
+﻿namespace FastConsole
 {
     /// <summary>
     /// A simple implementation of IInputOptions
@@ -32,28 +32,35 @@ namespace FastConsole
         /// <returns></returns>
         public SimpleInputOpt(string requestMessage, string invalidInputMessage) : this(requestMessage)
         {
-            InvalidMsg = invalidInputMessage;
+            InvalidInputMsg = invalidInputMessage;
         }
         #endregion
 
         /// <summary>
+        /// The default InvalidInputMessage for new instances of SimpleInputOpt.
+        /// </summary>
+        /// <value></value>
+        public static string Default_InvalidInputMsg { protected get; set; } = "The value is invalid!\n";
+
+        #region Props
+        /// <summary>
         /// The message to be printed when 'InvalidInputMessage()' is called.
         /// </summary>
         /// <value></value>
-        protected string RequestMsg { get; set; } = "Enter the value: ";
+        public string RequestMsg { get; set; } = "Enter the value: ";
 
         /// <summary>
         /// The message to be printed when 'InvalidInputMessage()' is called.
         /// </summary>
         /// <value></value>
-        protected string InvalidMsg { get; set; } = "The value is invalid!\n";
+        public string InvalidInputMsg { get; set; } = Default_InvalidInputMsg;
 
         /// <summary>
         /// If, in cases of invalid input, you want 'InvalidInputMessage()' to be invoked.<para/>
         /// The default is true.
         /// </summary>
         /// <value></value>
-        public bool ShowInvalidMessage { get; set; } = true;
+        public bool ShowInvalidInputMsg { get; set; } = true;
 
         /// <summary>
         /// If, in cases of invalid input, you want the request to repeat until input is valid.<para/>
@@ -61,23 +68,49 @@ namespace FastConsole
         /// </summary>
         /// <value></value>
         public bool RepeatWhenInvalid { get; set; } = true;
+        #endregion
 
         /// <summary>
         /// Prints the 'invalidInputMessage'.
         /// </summary>
-        public void InvalidInputMessage()
+        public void PrintInvalidInputMsg()
         {
-            Out.Print(InvalidMsg);
+            Out.Print(InvalidInputMsg);
         }
 
         /// <summary>
         /// Prints the 'requestMessage'.
         /// </summary>
-        public void RequestMessage()
+        public void PrintRequestMsg()
         {
             Out.Print(RequestMsg);
         }
 
+        /// <summary>
+        /// Changes the RequestMsg and rturns this SimpleInputOpt.
+        /// </summary>
+        /// <param name="requestMsg"></param>
+        /// <returns></returns>
+        public SimpleInputOpt SetMsg(string requestMsg)
+        {
+            this.RequestMsg = requestMsg;
+            return this;
+        }
+        
+        /// <summary>
+        /// Changes the RequestMsg and the InvalidInputMsg and rturns this SimpleInputOpt.
+        /// </summary>
+        /// <param name="requestMsg"></param>
+        /// <param name="invalidInputMsg"></param>
+        /// <returns></returns>
+        public SimpleInputOpt SetMsg(string requestMsg, string invalidInputMsg)
+        {
+            this.RequestMsg = requestMsg;
+            this.InvalidInputMsg = invalidInputMsg;
+            return this;
+        }
+
+        #region Operators
         /// <summary>
         /// Returns a: <c>new SimpleInput(requestMessage);</c>
         /// </summary>
@@ -86,5 +119,6 @@ namespace FastConsole
         {
             return new SimpleInputOpt(requestMessage);
         }
+        #endregion
     }
 }

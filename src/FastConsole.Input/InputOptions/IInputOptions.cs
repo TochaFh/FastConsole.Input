@@ -10,7 +10,7 @@
         /// If, in cases of invalid input, you want 'InvalidInputMessage()' to be invoked.
         /// </summary>
         /// <value></value>
-        bool ShowInvalidMessage { get; set; }
+        bool ShowInvalidInputMsg { get; set; }
 
         /// <summary>
         /// If, in cases of invalid input, you want the request to repeat until input is valid.
@@ -29,7 +29,7 @@
         /// }    
         /// </code>
         /// </summary>
-        void RequestMessage();
+        void PrintRequestMsg();
 
         /// <summary>
         /// Prints a message for an invalid input.
@@ -42,6 +42,6 @@
         /// }    
         /// </code>
         /// </summary>
-        void InvalidInputMessage();
+        void PrintInvalidInputMsg();
     }
 }
