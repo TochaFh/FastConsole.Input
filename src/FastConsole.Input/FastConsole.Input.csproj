@@ -15,8 +15,8 @@
     <Company>TochaFh</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://github.com/TochaFh/FastConsole.Input/blob/master/src/FastConsole.Input/icon.png?raw=true</PackageIconUrl>
     <!--
-    <PackageIconUrl></PackageIconUrl>
     <Description></Description>
     <PackageTags></PackageTags>
     -->
