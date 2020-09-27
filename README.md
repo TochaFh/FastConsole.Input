@@ -72,6 +72,6 @@ int age = In.ReadInput<int?>(In.InOpt("Enter your age: ", "You must be over 18!\
 * ### Notes
 The methods accept IInputOptions and NOT SimpleINputOpt, so you can create your own implementation.  
   
-There's another implementation of IInputOptions, it's the CoolInputOpt, which is like SimpleINputOpt but it's cool, because you can use CoolText (from [FastConsole](https://github.com/TochaFh/FastConsole)) instead of string!  
+There's another implementation of IInputOptions, it's the CoolInputOpt, which is like SimpleInputOpt but it's cool, because you can use CoolText (from [FastConsole](https://github.com/TochaFh/FastConsole)) instead of string!  
   
 This library depends on [FastConsole](https://github.com/TochaFh/FastConsole). Probably when you add this to your project, FastConsole is automatically added.
