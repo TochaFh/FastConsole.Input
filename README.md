@@ -19,7 +19,7 @@ Install-Package FastConsole.Input -Version 1.0.0
 paket add FastConsole.Input --version 1.0.0
 ```
 ## Quickstart - Examples
-* Using
+* ### Using
 ```c#
 using FastConsole;
 ```
