@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="FastConsole" Version="1.1.2" />
+    <PackageReference Include="FastConsole" Version="1.1.3" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -16,10 +16,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://github.com/TochaFh/FastConsole.Input/blob/master/src/FastConsole.Input/icon.png?raw=true</PackageIconUrl>
-    <!--
-    <Description></Description>
-    <PackageTags></PackageTags>
-    -->
+    <Description>Fast and simple methods to get input from the console with messages, conversions and validations!</Description>
+    <PackageTags>fast console input get parse validate print log cool user in</PackageTags>
     <RepositoryUrl>https://github.com/TochaFh/FastConsole.Input</RepositoryUrl>
     <PackageProjectUrl>https://github.com/TochaFh/FastConsole.Input</PackageProjectUrl>
     <Copyright>Copyright © 2020 Rafael Hoyos</Copyright>

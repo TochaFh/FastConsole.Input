@@ -92,7 +92,7 @@ namespace FastConsole
         }
 
         /// <summary>
-        /// Changes the RequestMsg and rturns this CoolInputOpt.
+        /// Changes the RequestMsg and returns this CoolInputOpt.
         /// </summary>
         /// <param name="requestMsg"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace FastConsole
         }
         
         /// <summary>
-        /// Changes the RequestMsg and the InvalidInputMsg and rturns this CoolInputOpt.
+        /// Changes the RequestMsg and the InvalidInputMsg and returns this CoolInputOpt.
         /// </summary>
         /// <param name="requestMsg"></param>
         /// <param name="invalidInputMsg"></param>
@@ -131,7 +131,7 @@ namespace FastConsole
         /// <param name="requestMessage"></param>
         public static explicit operator CoolInputOpt(CoolSnippet requestMessage)
         {
-            return new CoolInputOpt((CoolText)requestMessage);
+            return new CoolInputOpt(requestMessage);
         }
         #endregion
     }

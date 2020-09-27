@@ -81,31 +81,6 @@
 
 
         /// <summary>
-        /// Creates a CoolInputOpt with this CoolSnippet as the request message and the specified bool parameters.
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="repeatWhenInvalid"></param>
-        /// <param name="showInvalidMessage"></param>
-        /// <returns></returns>
-        public static CoolInputOpt InOpt(this CoolSnippet text, bool repeatWhenInvalid = true, bool showInvalidMessage = true)
-        {
-            return new CoolInputOpt((CoolText)text) { RepeatWhenInvalid = repeatWhenInvalid, ShowInvalidInputMsg = showInvalidMessage };
-        }
-
-        /// <summary>
-        /// Creates a CoolInputOpt with the specified (CoolSnippet) messages and the specified bool parameters.
-        /// </summary>
-        /// <param name="requestMessage"></param>
-        /// <param name="invalidInputMessage"></param>
-        /// <param name="repeatWhenInvalid"></param>
-        /// <param name="showInvalidMessage"></param>
-        /// <returns></returns>
-        public static CoolInputOpt InOpt(CoolSnippet requestMessage, CoolSnippet invalidInputMessage, bool repeatWhenInvalid = true, bool showInvalidMessage = true)
-        {
-            return new CoolInputOpt((CoolText)requestMessage, (CoolText)invalidInputMessage) { RepeatWhenInvalid = repeatWhenInvalid, ShowInvalidInputMsg = showInvalidMessage };
-        }
-
-        /// <summary>
         /// Creates a CoolInputOpt with the specified (CoolSnippet) messages in the tuple and the specified bool parameters.
         /// </summary>
         /// <param name="msgs">1 - requestMessage<para/>2 - invalidInputMessage</param>

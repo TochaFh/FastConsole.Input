@@ -32,29 +32,43 @@ namespace FastConsole
         }
 
         /// <summary>
-        /// Invokes the opt 'RequestMessage()' and reads the next line from the console.<para/>
-        /// If it is null or empty or white space, a decision is made according to opt.
+        /// Returns 'ReadInput(IInputOptions opt, Func parse)'* with the specified parameters.
+        /// If you don't specify the 'parse' parameter, it will automatically check for empty string<para/>
+        /// * Invokes the opt 'RequestMessage()' and reads the next line from the console.
+        /// Uses the Func to parse and validate the input and, if it returns null, a decision is made according to opt.<para/>
+        /// - If you just want the raw string, use <c>In.ReadLine</c>
         /// </summary>
         /// <param name="opt"></param>
+        /// <param name="parse">
+        /// If null (default value), will be: '<c>(s) => string.IsNullOrWhiteSpace(s) ? null : s</c>'<para/>
+        /// </param>
         /// <returns></returns>
-        public static string ReadString(IInputOptions opt)
+        public static string ReadString(IInputOptions opt, Func<string, string> parse = null)
         {
-            opt.PrintRequestMsg();
-
-            string s = In.ReadLine();
-
-            if (!string.IsNullOrWhiteSpace(s)) return s;
-
-            if (opt.ShowInvalidInputMsg) opt.PrintInvalidInputMsg();
-
-            if (opt.RepeatWhenInvalid) return In.ReadString(opt);
-
-            return null;
+            if (parse == null) parse = s => string.IsNullOrWhiteSpace(s) ? null : s;
+            return In.ReadInput<string>(opt, parse);
         }
 
         /// <summary>
-        /// Invokes the opt 'RequestMessage()' and reads the next line from the console.<para/>
-        /// Uses the Func to parse and validate the string and, if it returns null, a decision is made according to opt.
+        /// Returns 'ReadInput(string requestMessage, Func parse)'* with the specified parameters.
+        /// If you don't specify the 'parse' parameter, it will automatically check for empty string<para/>
+        /// * Returns 'ReadInput(IInputOptions opt, Func parse)'* with the specified parse parameter and a SimpleInputOpt based on the specified string.<para/>
+        /// - If you just want the raw string, use <c>In.ReadLine</c>
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <param name="parse">
+        /// If null (default value), will be: '<c>(s) => string.IsNullOrWhiteSpace(s) ? null : s</c>'<para/>
+        /// </param>
+        /// <returns></returns>
+        public static string ReadString(string requestMessage, Func<string, string> parse = null)
+        {
+            if (parse == null) parse = s => string.IsNullOrWhiteSpace(s) ? null : s;
+            return In.ReadInput<string>(requestMessage, parse);
+        }
+
+        /// <summary>
+        /// Invokes the opt 'RequestMessage()' and reads the next line from the console.
+        /// Uses the Func to parse and validate the input and, if it returns null, a decision is made according to opt.
         /// </summary>
         /// <param name="opt"></param>
         /// <param name="parse"></param>
@@ -63,6 +77,8 @@ namespace FastConsole
         public static T ReadInput<T>(IInputOptions opt, Func<string, T> parse)
         {
             opt.PrintRequestMsg();
+
+            if (parse == null) throw new ArgumentNullException("parse");
 
             T result = parse(In.ReadLine());
 
@@ -76,7 +92,10 @@ namespace FastConsole
         }
 
         /// <summary>
-        /// Returns 'ReadInput(IInputOptions opt, Func parse)' with the specified parse parameter and an SimpleInputOpt based on the specified string.
+        /// Returns 'ReadInput(IInputOptions opt, Func parse)'* with the specified parse parameter and a SimpleInputOpt based on the specified string.
+        /// <para/>
+        /// * Invokes the opt 'RequestMessage()' and reads the next line from the console.
+        /// Uses the Func to parse and validate the input and, if it returns null, a decision is made according to opt.
         /// </summary>
         /// <param name="requestMessage"></param>
         /// <param name="parse"></param>

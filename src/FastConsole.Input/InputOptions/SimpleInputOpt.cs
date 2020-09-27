@@ -87,7 +87,7 @@
         }
 
         /// <summary>
-        /// Changes the RequestMsg and rturns this SimpleInputOpt.
+        /// Changes the RequestMsg and returns this SimpleInputOpt.
         /// </summary>
         /// <param name="requestMsg"></param>
         /// <returns></returns>
@@ -98,7 +98,7 @@
         }
         
         /// <summary>
-        /// Changes the RequestMsg and the InvalidInputMsg and rturns this SimpleInputOpt.
+        /// Changes the RequestMsg and the InvalidInputMsg and returns this SimpleInputOpt.
         /// </summary>
         /// <param name="requestMsg"></param>
         /// <param name="invalidInputMsg"></param>
