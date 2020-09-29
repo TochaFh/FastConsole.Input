@@ -1,6 +1,6 @@
 # FastConsole.Input - Library for .NET
 It's never been so easy to get input from the console. With FastConsole.Input you have fast and simple methods to get user input with messages, conversions and validations! Complements [FastConsole](https://github.com/TochaFh/FastConsole).
-
+* [nuget.org](https://www.nuget.org/packages/FastConsole.Input/)
 ## Install
 * Package Reference
 ```csproj
