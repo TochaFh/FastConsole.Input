@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\FastConsole.Input\FastConsole.Input.csproj" />-->
+    <ProjectReference Include="..\FastConsole.Input\FastConsole.Input.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastConsole.Input" Version="1.0.0" />
+    <!-- <PackageReference Include="FastConsole.Input" Version="1.0.0" /> -->
   </ItemGroup>
 
   <PropertyGroup>
